@@ -1,7 +1,7 @@
 package ee.tmtu.libludum.graphics;
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL15.glBindBuffer;
+import ee.tmtu.libludum.core.Disposable;
+
 import static org.lwjgl.opengl.GL30.*;
 
 public class RenderBuffer extends GLBuffer implements Bindable, Disposable {

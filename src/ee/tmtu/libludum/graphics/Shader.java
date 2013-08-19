@@ -1,5 +1,6 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.core.Disposable;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.util.vector.*;
 

@@ -1,6 +1,8 @@
 package ee.tmtu.libludum.assets;
 
 import com.google.gson.Gson;
+import ee.tmtu.libludum.assets.loaders.SoundLoader;
+import ee.tmtu.libludum.sound.Sound;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,5 +39,9 @@ public class AssetManager {
 	public static <T> void register(Class<?> c, AssetLoader<T> al) {
 		assetLoaders.put(c, al);
 	}
+
+    static {
+        AssetManager.register(Sound.class, new SoundLoader());
+    }
 
 }

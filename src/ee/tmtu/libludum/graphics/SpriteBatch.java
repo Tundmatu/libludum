@@ -7,7 +7,7 @@ public class SpriteBatch {
     private static final int VERTICES_PER_QUAD = 6;
 
     private VertexArray vertexArray;
-    private Sprite currentSprite;
+    private Texture currentTexture;
 
     private boolean drawing;
     private int maxIndex;
@@ -26,7 +26,7 @@ public class SpriteBatch {
 
         this.drawing = true;
         this.index = 0;
-        this.currentSprite = null;
+        this.currentTexture = null;
     }
 
     public void end() {
@@ -48,8 +48,8 @@ public class SpriteBatch {
     }
 
     public void render() {
-        if(this.currentSprite.getTexture() != null) {
-            glBindTexture(GL_TEXTURE_2D, this.currentSprite.getTexture().id);
+        if(this.currentTexture != null) {
+            glBindTexture(GL_TEXTURE_2D, this.currentTexture.id);
         }
 
         this.vertexArray.bind();
@@ -62,13 +62,13 @@ public class SpriteBatch {
             throw new IllegalStateException("SpriteBatch.start() must be called before attempting to draw.");
         }
 
-        if(this.currentSprite == null) {
-            this.currentSprite = sprite;
+        if(this.currentTexture == null) {
+            this.currentTexture = sprite.getTexture();
         }
 
-        if(!this.currentSprite.getTexture().equals(sprite.getTexture()) || this.index > this.maxIndex) {
+        if(!this.currentTexture.equals(sprite.getTexture()) || this.index > this.maxIndex) {
             this.flush();
-            this.currentSprite = sprite;
+            this.currentTexture = sprite.getTexture();
         }
 
         float x1,y1, x2,y2, x3,y3, x4,y4;

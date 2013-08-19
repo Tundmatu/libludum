@@ -1,5 +1,7 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.core.Disposable;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.*;
 

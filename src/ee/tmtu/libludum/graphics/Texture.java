@@ -1,5 +1,6 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.core.Disposable;
 import org.lwjgl.BufferUtils;
 
 import java.nio.ByteBuffer;
@@ -76,6 +77,11 @@ public class Texture implements Bindable, Disposable {
     @Override
     public void dispose() {
         glDeleteTextures(this.id);
+    }
+
+    @Override
+    public boolean equals(Object rhs) {
+        return (rhs instanceof Texture) && this.id == ((Texture)rhs).id;
     }
 
     public enum FillMode {
