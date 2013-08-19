@@ -1,11 +1,5 @@
 package ee.tmtu.libludum.graphics;
 
-import org.lwjgl.BufferUtils;
-
-import java.nio.ByteBuffer;
-
-import ee.tmtu.oogl.Texture.FillMode;
-
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL30.*;
 
@@ -23,7 +17,7 @@ public class FrameBuffer extends GLBuffer implements Bindable, Disposable {
         this.width = width;
         this.height = height;
 
-        this.texture = new Texture(GL_TEXTURE_2D, this.width, this.height, FillMode.RESERVE_NULL);
+        this.texture = new Texture(GL_TEXTURE_2D, this.width, this.height, Texture.FillMode.RESERVE_NULL);
         this.texture.filter(GL_NEAREST);
         this.texture.wrap(GL_CLAMP);
 

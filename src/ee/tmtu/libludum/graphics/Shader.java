@@ -1,6 +1,5 @@
 package ee.tmtu.libludum.graphics;
 
-import ee.tmtu.oogl.Bindable;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.util.vector.*;
 
@@ -8,8 +7,6 @@ import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 
 public class Shader implements Bindable, Disposable {
