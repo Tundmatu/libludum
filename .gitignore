@@ -1,3 +1,8 @@
+# Java
+*.class
+*.jar
+lib/
+
 # Intellij IDEA
 .idea/
 *.iml
