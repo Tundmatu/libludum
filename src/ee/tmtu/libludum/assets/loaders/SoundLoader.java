@@ -15,19 +15,21 @@ public class SoundLoader implements AssetLoader<Sound> {
 
     @Override
     public Sound load(File res) throws IOException {
-        Sound sound = new Sound();
         WaveData wav = WaveData.create(res.toURI().toURL());
         int buffer = alGenBuffers();
         int source = alGenSources();
         alBufferData(buffer, wav.format, wav.data, wav.samplerate);
         wav.dispose();
 
-        sound.setBuffer(buffer);
+        Sound sound = new Sound();
         sound.setSource(source);
+        sound.setBuffer(buffer);
         sound.setPosition(new Vector2f(0.f, 0.f));
         sound.setVelocity(new Vector3f(0.f, 0.f, 0.f));
         sound.setGain(1.f);
         sound.setPitch(1.f);
+
+        System.out.println(alGetError());
         return sound;
     }
 

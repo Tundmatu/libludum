@@ -21,7 +21,7 @@ public class Sound implements Disposable {
     }
 
     public void setBuffer(int buffer) {
-        this.buffer = buffer;
+        alSourcei(this.source, AL_BUFFER, this.buffer = buffer);
     }
 
     public int getSource() {
@@ -71,6 +71,7 @@ public class Sound implements Disposable {
     }
 
     public void setLooping(boolean looping) {
+        alSourcei(this.source, AL_LOOPING, looping ? AL_TRUE : AL_FALSE);
         this.looping = looping;
     }
 

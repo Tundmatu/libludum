@@ -1,6 +1,7 @@
 package ee.tmtu.libludum.core;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -34,6 +35,7 @@ public abstract class Game implements Runnable {
             Display.setTitle(this.settings.title);
             Display.setVSyncEnabled(this.settings.vsync);
             Display.create();
+            AL.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
         }
@@ -58,6 +60,7 @@ public abstract class Game implements Runnable {
             this.draw(accumulator / Game.DT);
             Display.update();
         }
+        AL.destroy();
         Display.destroy();
         System.exit(0);
     }

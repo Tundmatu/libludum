@@ -1,7 +1,10 @@
 package ee.tmtu.libludum.test;
 
+import ee.tmtu.libludum.assets.AssetManager;
 import ee.tmtu.libludum.core.Game;
 import ee.tmtu.libludum.core.GameSettings;
+import ee.tmtu.libludum.sound.Audio;
+import ee.tmtu.libludum.sound.Sound;
 
 import static org.lwjgl.opengl.GL11.*;
 
@@ -19,11 +22,20 @@ public class GameTest extends Game {
         glOrtho(0.f, this.settings.width, this.settings.height, 0.f, 0.f, 1.f);
         glMatrixMode(GL_MODELVIEW);
         glLoadIdentity();
-    }
 
+        sound = AssetManager.load("Gun1.wav", Sound.class);
+        sound.setLooping(true);
+        Audio.play(sound);
+    }
+    Sound sound;
+
+    int i = 0;
     @Override
     public void update() {
-
+        i++;
+        if(i > 150) {
+            Audio.stop(sound);
+        }
     }
 
     @Override
