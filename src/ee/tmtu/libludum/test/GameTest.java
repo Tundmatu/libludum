@@ -24,4 +24,9 @@ public class GameTest extends Game {
 
     }
 
+    public static void main(String[] args) {
+        GameTest game = new GameTest(GameSettings.from("assets/settings.cfg"));
+        new Thread(game).start();
+    }
+
 }

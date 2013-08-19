@@ -1,6 +1,5 @@
 package ee.tmtu.libludum.core;
 
-import com.google.gson.GsonBuilder;
 import ee.tmtu.libludum.assets.AssetManager;
 
 import java.io.FileNotFoundException;
