@@ -33,7 +33,7 @@ public class GameTest extends Game {
     @Override
     public void update() {
         i++;
-        if(i > 150) {
+        if(i > 75) {
             Audio.stop(sound);
         }
     }
