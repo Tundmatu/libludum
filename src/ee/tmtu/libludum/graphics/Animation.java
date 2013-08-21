@@ -2,23 +2,23 @@ package ee.tmtu.libludum.graphics;
 
 import java.util.ArrayList;
 
-public class SpriteAnimation {
+public class Animation {
 
-    private ArrayList<SpriteAnimationEntry> frames;
+    private ArrayList<AnimationEntry> frames;
     private int index;
     private float time;
 
-    public SpriteAnimation() {
+    public Animation() {
         this(0);
     }
 
-    public SpriteAnimation(int size) {
+    public Animation(int size) {
         this.frames = new ArrayList<>(size);
         this.index = 0;
         this.time = 0.f;
     }
 
-    public void add(SpriteAnimationEntry frame) {
+    public void add(AnimationEntry frame) {
         this.frames.add(frame);
     }
 
@@ -37,8 +37,8 @@ public class SpriteAnimation {
         }
     }
 
-    public Sprite frame() {
-        return this.frames.get(this.index).sprite;
+    public Texture frame() {
+        return this.frames.get(this.index).texture;
     }
 
 }
