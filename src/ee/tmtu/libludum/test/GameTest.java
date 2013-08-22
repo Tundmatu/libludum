@@ -50,7 +50,7 @@ public class GameTest extends Game {
         font = AssetManager.load("./assets/fairfax.fnt", Font.class);
 
         Button button = new Button("Play sound!", font);
-        button.padding = new Padding(10);
+        button.padding = new Padding(30);
         button.drawable = p9;
         button.listener = new MouseListener() {
             @Override

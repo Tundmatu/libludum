@@ -8,18 +8,15 @@ import ee.tmtu.libludum.ui.event.MouseEvent;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Root {
+public class Root extends Container {
 
-    private LinkedList<Component> components;
     private Component hover;
     private Component focus;
     private Margin margin;
     private Padding padding;
 
     public Root(Margin margin, Padding padding) {
-        this.margin = margin;
-        this.padding = padding;
-        this.components = new LinkedList<>();
+        super(margin, padding);
     }
 
     public void add(Component component) {
@@ -75,31 +72,6 @@ public class Root {
     public boolean requestFocus(Component component) {
         this.focus = component;
         return true;
-    }
-
-    public void layout() {
-        Iterator<Component> iterator = this.components.iterator();
-        Component component;
-        int yHeight = 0;
-        while (iterator.hasNext()) {
-            component = iterator.next();
-            component.layout();
-            component.x = margin.left + padding.left;
-            component.y = margin.top + padding.top + yHeight;
-            yHeight += component.y + component.margin.top + component.margin.bottom;
-        }
-    }
-
-    public void update() {
-        for(Component component : this.components) {
-            component.update();
-        }
-    }
-
-    public void draw(SpriteBatch batch, double lerp) {
-        for(Component component : this.components) {
-            component.draw(batch, lerp);
-        }
     }
 
 }

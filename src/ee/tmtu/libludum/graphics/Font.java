@@ -54,17 +54,29 @@ public class Font {
 		batch.setColor(Color.WHITE);
 	}
 
-	public int getWidth(String text) {
-		int x = 0;
-		for(int i = 0; i < text.length(); i++) {
-			char c = text.charAt(i);
-			Glyph g = glyphs[c];
-			if(g != null) {
-				x += g.xadv;
-			}
-		}
-		return x;
-	}
+    public int getWidth(String text) {
+        int x = 0;
+        for(int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            Glyph g = glyphs[c];
+            if(g != null) {
+                x += g.xadv;
+            }
+        }
+        return x;
+    }
+
+    public int getHeight(String text) {
+        int height = 0;
+        for(int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            Glyph g = glyphs[c];
+            if(g != null) {
+                height = Math.max(height, g.height);
+            }
+        }
+        return height;
+    }
 
 	public static enum Orientation {
 		LEFT, CENTER, RIGHT
