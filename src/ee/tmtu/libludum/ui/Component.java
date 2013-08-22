@@ -6,6 +6,7 @@ import ee.tmtu.libludum.ui.event.Event;
 public abstract class Component {
 
     public float x, y, width, height;
+    public Drawable drawable;
     public ComponentState state;
     public Orientation orientation;
     public Margin margin;
@@ -26,7 +27,9 @@ public abstract class Component {
     }
 
     public void draw(SpriteBatch batch, double lerp) {
-
+        if(this.drawable != null) {
+            this.drawable.draw(batch, this.x, this.y, this.width, this.height);
+        }
     }
 
     public void layout() {

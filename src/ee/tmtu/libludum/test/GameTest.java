@@ -4,7 +4,9 @@ import ee.tmtu.libludum.assets.AssetManager;
 import ee.tmtu.libludum.core.Game;
 import ee.tmtu.libludum.core.GameSettings;
 import ee.tmtu.libludum.graphics.Font;
+import ee.tmtu.libludum.graphics.Patch9;
 import ee.tmtu.libludum.graphics.SpriteBatch;
+import ee.tmtu.libludum.graphics.Texture;
 import ee.tmtu.libludum.sound.Audio;
 import ee.tmtu.libludum.sound.Sound;
 import ee.tmtu.libludum.ui.Button;
@@ -23,6 +25,7 @@ public class GameTest extends Game {
     public Sound sound;
     public Root root;
     public Font font;
+    public Patch9 p9;
 
     public GameTest(GameSettings settings) {
         super(settings);
@@ -42,9 +45,13 @@ public class GameTest extends Game {
 
         batch = new SpriteBatch(250);
 
+        p9 = new Patch9(AssetManager.load("./assets/button.png", Texture.class), 5);
+
         font = AssetManager.load("./assets/fairfax.fnt", Font.class);
 
         Button button = new Button("Play sound!", font);
+        button.padding = new Padding(10);
+        button.drawable = p9;
         button.listener = new MouseListener() {
             @Override
             public void onMouseEvent(MouseEvent event) {
@@ -63,19 +70,23 @@ public class GameTest extends Game {
     public void update() {
         MouseEvent me = new MouseEvent();
         while(Mouse.next()) {
-            me.x = Mouse.getX();
-            me.y = Mouse.getY();
-            me.dx = Mouse.getDX();
-            me.dy = Mouse.getDY();
-            if(Mouse.getEventButtonState()) {
-                me.state = MouseEvent.MouseState.DOWN;
-            } else {
-                me.state = MouseEvent.MouseState.UP;
+            me.btn = Mouse.getEventButton();
+            me.x = Mouse.getEventX();
+            me.y = this.settings.height - Mouse.getEventY();
+            me.dx = Mouse.getEventDX();
+            me.dy = Mouse.getEventDY();
+            me.state = MouseEvent.MouseState.NULL;
+            if(me.dx != 0 || me.dy != 0) {
+                me.state = MouseEvent.MouseState.MOVE;
             }
-            root.fire(me);
-        }
-        if(me.dx != 0 || me.dy != 0) {
-            me.state = MouseEvent.MouseState.MOVE;
+            if(me.btn > -1) {
+                if(Mouse.getEventButtonState()) {
+                    me.state = MouseEvent.MouseState.DOWN;
+                } else {
+                    me.state = MouseEvent.MouseState.UP;
+                }
+            }
+            System.out.println(me.state);
             root.fire(me);
         }
     }
@@ -92,6 +103,7 @@ public class GameTest extends Game {
         glRectf(100, 100, 200, 200);*/
         batch.start();
         root.draw(batch, lerp);
+        p9.draw(batch, 200, 200, Mouse.getX(), Mouse.getY());
         batch.end();
     }
 

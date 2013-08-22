@@ -2,6 +2,7 @@
 *.class
 *.jar
 lib/
+out/
 
 # Intellij IDEA
 .idea/

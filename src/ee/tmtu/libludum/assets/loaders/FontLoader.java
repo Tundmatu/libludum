@@ -27,7 +27,6 @@ public class FontLoader implements AssetLoader<Font> {
 		texturePages = new Texture[pageCount];
 		String pages = br.readLine();
 		while(pageID < pageCount) {
-            System.out.println(res.getParent());
 			texturePages[pageID] = AssetManager.load(res.getParent() + "/" + property(pages, "file", pageID, String.class), Texture.class);
 			pageID++;
 		}

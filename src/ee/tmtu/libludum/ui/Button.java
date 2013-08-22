@@ -22,11 +22,20 @@ public class Button extends Component {
     public void onEvent(Event event) {
         if(event instanceof MouseEvent) {
             MouseEvent me = (MouseEvent)event;
+            System.out.println(me.state);
+
             if(listener != null) {
-                listener.onMouseEvent(me);
+                switch (me.state) {
+                    case DOWN:
+                        break;
+                    case UP:
+                        listener.onMouseEvent(me);
+                        break;
+                    case MOVE:
+                        break;
+                }
             }
         }
-        System.out.println(event);
     }
 
     @Override
@@ -38,7 +47,7 @@ public class Button extends Component {
     public void draw(SpriteBatch batch, double lerp) {
         super.draw(batch, lerp);
 
-        this.font.draw(batch, this.x, this.y, this.title);
+        this.font.draw(batch, this.x + this.width / 2, this.y + this.font.lineheight / 2, this.title, Font.Orientation.CENTER);
     }
 
     @Override
