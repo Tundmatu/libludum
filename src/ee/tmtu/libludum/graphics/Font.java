@@ -44,6 +44,7 @@ public class Font {
 				if(g != null) {
 					Texture tex = pages[g.page];
 					Vector4f coords = g.getTexCoords(tex);
+                    System.out.println(c + " | " + Integer.valueOf(c) +  " | " + coords);
 					batch.draw(tex, lx + g.xoff, y + g.yoff, g.width, g.height, coords.x, coords.y, coords.z, coords.w);
 					lx += g.xadv;
 				}

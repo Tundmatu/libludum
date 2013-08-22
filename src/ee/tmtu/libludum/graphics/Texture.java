@@ -14,6 +14,15 @@ public class Texture implements Bindable, Disposable {
     public int target;
     public int id;
 
+    public Texture(int target, int width, int height, ByteBuffer buffer) {
+        this.target = target;
+        this.width = width;
+        this.height = height;
+        this.id = glGenTextures();
+        glBindTexture(this.target, this.id);
+        glTexImage2D(this.target, 0, GL_RGBA8, this.width, this.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    }
+
     public Texture(int target, int width, int height, FillMode fm) {
         this.target = target;
         this.width = width;

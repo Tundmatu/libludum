@@ -1,5 +1,6 @@
 package ee.tmtu.libludum.ui;
 
+import ee.tmtu.libludum.graphics.SpriteBatch;
 import ee.tmtu.libludum.ui.event.Event;
 import ee.tmtu.libludum.ui.event.KeyEvent;
 import ee.tmtu.libludum.ui.event.MouseEvent;
@@ -18,6 +19,7 @@ public class Root {
     public Root(Margin margin, Padding padding) {
         this.margin = margin;
         this.padding = padding;
+        this.components = new LinkedList<>();
     }
 
     public void add(Component component) {
@@ -42,7 +44,7 @@ public class Root {
     public void fire(Event event) {
         if (event instanceof KeyEvent) {
             KeyEvent ke = (KeyEvent) event;
-            
+
         } else if (event instanceof MouseEvent) {
             MouseEvent me = (MouseEvent) event;
             Iterator<Component> iterator = this.components.iterator();
@@ -61,8 +63,10 @@ public class Root {
                 }
             }
             if (!hoverset) {
-                this.hover.state = Component.ComponentState.IDLE;
-                this.hover = null;
+                if(this.hover != null) {
+                    this.hover.state = Component.ComponentState.IDLE;
+                    this.hover = null;
+                }
             }
         }
     }
@@ -78,9 +82,22 @@ public class Root {
         int yHeight = 0;
         while (iterator.hasNext()) {
             component = iterator.next();
+            component.layout();
             component.x = margin.left + padding.left;
             component.y = margin.top + padding.top + yHeight;
             yHeight += component.y + component.margin.top + component.margin.bottom;
+        }
+    }
+
+    public void update() {
+        for(Component component : this.components) {
+            component.update();
+        }
+    }
+
+    public void draw(SpriteBatch batch, double lerp) {
+        for(Component component : this.components) {
+            component.draw(batch, lerp);
         }
     }
 

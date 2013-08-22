@@ -20,6 +20,7 @@ public class SpriteBatch {
     public SpriteBatch(int size) {
         this.vertexArray = new VertexArray(size * VERTICES_PER_QUAD, VertexAttribute.XY, VertexAttribute.RGBA, VertexAttribute.UV);
 
+        this.color = Color.WHITE;
         this.maxIndex = size * VERTICES_PER_QUAD;
     }
 
@@ -52,6 +53,7 @@ public class SpriteBatch {
     }
 
     public void render() {
+        glEnable(GL_TEXTURE_2D);
         if (this.currentTexture != null) {
             glBindTexture(GL_TEXTURE_2D, this.currentTexture.id);
         }
@@ -91,10 +93,10 @@ public class SpriteBatch {
             this.currentTexture = tex;
         }
 
-        final float r = color.getRed() / 255.f;
-        final float g = color.getGreen() / 255.f;
-        final float b = color.getBlue() / 255.f;
-        final float a = color.getAlpha() / 255.f;
+        final float r = (float)color.getRed() / 255.f;
+        final float g = (float)color.getGreen() / 255.f;
+        final float b = (float)color.getBlue() / 255.f;
+        final float a = (float)color.getAlpha() / 255.f;
 
 
         float x1, y1, x2, y2, x3, y3, x4, y4;

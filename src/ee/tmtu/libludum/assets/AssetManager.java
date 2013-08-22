@@ -1,7 +1,11 @@
 package ee.tmtu.libludum.assets;
 
 import com.google.gson.Gson;
+import ee.tmtu.libludum.assets.loaders.FontLoader;
 import ee.tmtu.libludum.assets.loaders.SoundLoader;
+import ee.tmtu.libludum.assets.loaders.TextureLoader;
+import ee.tmtu.libludum.graphics.Font;
+import ee.tmtu.libludum.graphics.Texture;
 import ee.tmtu.libludum.sound.Sound;
 
 import java.io.File;
@@ -41,6 +45,8 @@ public class AssetManager {
 	}
 
     static {
+        AssetManager.register(Texture.class, new TextureLoader());
+        AssetManager.register(Font.class, new FontLoader());
         AssetManager.register(Sound.class, new SoundLoader());
     }
 
