@@ -1,6 +1,8 @@
 package ee.tmtu.libludum.graphics;
 
-public class Sprite {
+import ee.tmtu.libludum.ui.Drawable;
+
+public class Sprite implements Drawable {
 
     private Texture texture;
 
@@ -170,4 +172,12 @@ public class Sprite {
         this.rotation = rotation;
     }
 
+    @Override
+    public void draw(SpriteBatch batch, float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        batch.draw(this);
+    }
 }

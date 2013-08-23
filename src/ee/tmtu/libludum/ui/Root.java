@@ -51,7 +51,6 @@ public class Root extends Container {
                 component = iterator.next();
                 if (me.x > component.x && me.x < component.x + component.width) {
                     if (me.y > component.y && me.y < component.y + component.height) {
-                        System.out.println("MOVER");
                         this.hover = component;
                         component.state = Component.ComponentState.HOVER;
                         hoverset = true;

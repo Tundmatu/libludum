@@ -22,8 +22,6 @@ public class Button extends Component {
     public void onEvent(Event event) {
         if(event instanceof MouseEvent) {
             MouseEvent me = (MouseEvent)event;
-            System.out.println(me.state);
-
             if(listener != null) {
                 switch (me.state) {
                     case DOWN:
@@ -47,7 +45,7 @@ public class Button extends Component {
     public void draw(SpriteBatch batch, double lerp) {
         super.draw(batch, lerp);
 
-        this.font.draw(batch, this.x + this.width / 2, this.y + (this.height / 2) - this.font.lineheight / 2, this.title, Font.Orientation.CENTER);
+        this.font.draw(batch, this.x + this.width / 2, this.y + padding.top - 2, this.title, Font.Orientation.CENTER);
     }
 
     @Override
