@@ -45,22 +45,31 @@ public class GameTest extends Game {
 
         batch = new SpriteBatch(250);
 
-        p9 = new Patch9(AssetManager.load("./assets/button.png", Texture.class), 5);
+        p9 = new Patch9(AssetManager.load("./assets/idle.png", Texture.class), 5);
 
         font = AssetManager.load("./assets/fairfax.fnt", Font.class);
 
         Button button = new Button("Play sound!", font);
         button.padding = new Padding(10);
-        button.drawable = p9;
         button.listener = new MouseListener() {
             @Override
             public void onMouseEvent(MouseEvent event) {
                 Audio.play(sound);
             }
         };
+        Button someButton = new Button("Some other button", font);
+        someButton.padding = new Padding(20);
+        someButton.listener = new MouseListener() {
+            @Override
+            public void onMouseEvent(MouseEvent event) {
+                Audio.play(sound);
+            }
+        };
+
 
         root = new Root(new Margin(15), new Padding(0));
         root.add(button);
+        root.add(someButton);
         root.layout();
 
         sound = AssetManager.load("Gun1.wav", Sound.class);
@@ -102,7 +111,7 @@ public class GameTest extends Game {
         glRectf(100, 100, 200, 200);*/
         batch.start();
         root.draw(batch, lerp);
-        p9.draw(batch, 200, 200, Mouse.getX(), Mouse.getY());
+        p9.draw(batch, 200, 200, 300, 300);
         batch.end();
     }
 

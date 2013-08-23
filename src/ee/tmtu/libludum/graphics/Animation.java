@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Animation {
 
-    private ArrayList<AnimationEntry> frames;
+    private ArrayList<AnimationFrame> frames;
     private int index;
     private float time;
 
@@ -18,7 +18,7 @@ public class Animation {
         this.time = 0.f;
     }
 
-    public void add(AnimationEntry frame) {
+    public void add(AnimationFrame frame) {
         this.frames.add(frame);
     }
 
@@ -37,8 +37,8 @@ public class Animation {
         }
     }
 
-    public Texture frame() {
-        return this.frames.get(this.index).texture;
+    public AnimationFrame frame() {
+        return this.frames.get(this.index);
     }
 
 }

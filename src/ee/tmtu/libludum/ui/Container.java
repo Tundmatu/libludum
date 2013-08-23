@@ -24,7 +24,7 @@ public class Container extends Component {
             component.layout();
             component.x = x + margin.left + padding.left;
             component.y = y + margin.top + padding.top + yHeight;
-            yHeight += component.y + component.margin.top + component.margin.bottom;
+            yHeight += component.y + component.height;
         }
     }
 

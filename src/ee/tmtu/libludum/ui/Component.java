@@ -2,6 +2,7 @@ package ee.tmtu.libludum.ui;
 
 import ee.tmtu.libludum.graphics.SpriteBatch;
 import ee.tmtu.libludum.ui.event.Event;
+import ee.tmtu.libludum.ui.event.MouseEvent;
 
 public abstract class Component {
 
@@ -22,8 +23,32 @@ public abstract class Component {
 
     }
 
+    public void onEnter(MouseEvent event) {
+
+    }
+
+    public void onLeave(MouseEvent event) {
+
+    }
+
+    public void onDown(MouseEvent event) {
+
+    }
+
+    public void onMove(MouseEvent event) {
+
+    }
+
+    public void onUp(MouseEvent event) {
+
+    }
+
     public void update() {
 
+    }
+
+    public boolean isInside(int x, int y) {
+        return x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height;
     }
 
     public void draw(SpriteBatch batch, double lerp) {

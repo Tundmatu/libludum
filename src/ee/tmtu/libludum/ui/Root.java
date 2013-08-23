@@ -1,12 +1,10 @@
 package ee.tmtu.libludum.ui;
 
-import ee.tmtu.libludum.graphics.SpriteBatch;
 import ee.tmtu.libludum.ui.event.Event;
 import ee.tmtu.libludum.ui.event.KeyEvent;
 import ee.tmtu.libludum.ui.event.MouseEvent;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class Root extends Container {
 
@@ -49,19 +47,21 @@ public class Root extends Container {
             boolean hoverset = false;
             while (iterator.hasNext()) {
                 component = iterator.next();
-                if (me.x > component.x && me.x < component.x + component.width) {
-                    if (me.y > component.y && me.y < component.y + component.height) {
-                        this.hover = component;
-                        component.state = Component.ComponentState.HOVER;
-                        hoverset = true;
-                        component.onEvent(me);
-                        break;
+                if (component.isInside(me.x, me.y)) {
+                    if(this.hover != component) {
+                        component.onEnter(me);
                     }
+                    this.hover = component;
+                    component.onMove(me);
+                    hoverset = true;
+                    component.onEvent(me);
+                    break;
                 }
             }
             if (!hoverset) {
                 if(this.hover != null) {
-                    this.hover.state = Component.ComponentState.IDLE;
+                    this.hover.onLeave(me);
+                    //this.hover.state = Component.ComponentState.IDLE;
                     this.hover = null;
                 }
             }

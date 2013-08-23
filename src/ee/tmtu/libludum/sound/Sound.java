@@ -84,4 +84,17 @@ public class Sound implements Disposable {
         alDeleteBuffers(this.buffer);
         alDeleteSources(this.source);
     }
+
+    public static Sound fromBuffer(Sound sound) {
+        Sound snd = new Sound();
+        snd.setSource(alGenSources());
+        snd.setBuffer(sound.buffer);
+        snd.setGain(sound.gain);
+        snd.setPitch(sound.pitch);
+        snd.setVelocity(sound.velocity);
+        snd.setPosition(sound.position);
+        snd.setLooping(sound.looping);
+        return snd;
+    }
+
 }

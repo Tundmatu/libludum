@@ -37,9 +37,9 @@ public class Patch9 implements Drawable {
 
         // Dynamic Regions
         batch.drawRegion(this.texture, this.startCorner.x, this.yInsetStart, this.xInsetStart, inset, x, y + yInsetStart, this.xInsetStart, height - inset * 3);
-        batch.drawRegion(this.texture, this.inset, this.startCorner.y, this.inset, this.inset, x + this.inset, y, width - this.inset * 2, this.inset);
-        batch.drawRegion(this.texture, this.inset, this.yInsetEnd, this.inset, this.inset, x + this.inset, y + height - inset * 2, width - this.inset * 2, this.inset);
-        batch.drawRegion(this.texture, this.xInsetEnd, this.yInsetStart, this.inset, this.inset, x + width - inset, y + yInsetStart, this.xInsetStart, height - inset * 3);
+        batch.drawRegion(this.texture, this.startCorner.x + this.inset, this.startCorner.y, this.inset, this.inset, x + this.inset, y, width - this.inset * 2, this.inset);
+        batch.drawRegion(this.texture, this.startCorner.x + this.inset, this.yInsetEnd, this.inset, this.inset, x + this.inset, y + height - inset * 2, width - this.inset * 2, this.inset);
+        batch.drawRegion(this.texture, this.startCorner.x + this.xInsetEnd, this.yInsetStart, this.inset, this.inset, x + width - inset, y + yInsetStart, this.xInsetStart, height - inset * 3);
 
         // Middle piece
         batch.drawRegion(this.texture, this.inset, this.inset, this.inset, this.inset, x + inset, y + inset, width - inset * 2, height - inset * 3);
