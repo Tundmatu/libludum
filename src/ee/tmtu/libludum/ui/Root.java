@@ -10,8 +10,6 @@ public class Root extends Container {
 
     private Component hover;
     private Component focus;
-    private Margin margin;
-    private Padding padding;
 
     public Root(Margin margin, Padding padding) {
         super(margin, padding);
@@ -49,6 +47,7 @@ public class Root extends Container {
                 component = iterator.next();
                 if (component.isInside(me.x, me.y)) {
                     if(this.hover != component) {
+                        if(this.hover != null) this.hover.onLeave(me);
                         component.onEnter(me);
                     }
                     this.hover = component;

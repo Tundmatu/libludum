@@ -3,6 +3,7 @@
 *.jar
 lib/
 out/
+ld27/
 
 # Intellij IDEA
 .idea/

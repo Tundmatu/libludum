@@ -8,9 +8,15 @@ import ee.tmtu.libludum.graphics.Texture;
 import ee.tmtu.libludum.ui.event.Event;
 import ee.tmtu.libludum.ui.event.MouseEvent;
 import ee.tmtu.libludum.ui.event.MouseListener;
+import org.lwjgl.util.Color;
 
 public class Button extends Component {
 
+    public static final Color idleColor = new Color(190, 190, 190);
+    public static final Color hoverColor = new Color(220, 180, 140);
+    public static final Color clickColor = new Color(225, 225, 225);
+
+    public Color currentColor;
     public Patch9 idle, hover, click;
     public MouseListener listener;
     public Font font;
@@ -24,6 +30,7 @@ public class Button extends Component {
         this.drawable = idle;
         this.title = title;
         this.font = font;
+        this.currentColor = Button.idleColor;
     }
 
     @Override
@@ -49,6 +56,7 @@ public class Button extends Component {
     public void onEnter(MouseEvent event) {
         if(this.state != ComponentState.DOWN) {
             this.drawable = this.hover;
+            this.currentColor = Button.hoverColor;
             this.state = ComponentState.HOVER;
         }
     }
@@ -57,12 +65,14 @@ public class Button extends Component {
     public void onLeave(MouseEvent event) {
         this.drawable = this.idle;
         this.state = ComponentState.IDLE;
+        this.currentColor = Button.idleColor;
     }
 
     @Override
     public void onDown(MouseEvent event) {
         this.state = ComponentState.DOWN;
         this.drawable = this.click;
+        this.currentColor = Button.clickColor;
     }
 
     @Override
@@ -73,6 +83,7 @@ public class Button extends Component {
                 this.listener.onMouseEvent(event);
             }
             this.drawable = this.hover;
+            this.currentColor = Button.hoverColor;
         }
     }
 
@@ -85,12 +96,12 @@ public class Button extends Component {
     public void draw(SpriteBatch batch, double lerp) {
         super.draw(batch, lerp);
 
-        this.font.draw(batch, this.x + this.width / 2 + (this.state == ComponentState.DOWN ? 1 : 0), this.y + padding.top - 2 + (this.state == ComponentState.DOWN ? 1 : 0), this.title, Font.Orientation.CENTER);
+        this.font.draw(batch, this.x + this.width / 2 + (this.state == ComponentState.DOWN ? 1 : 0), this.y + padding.top - 2 + (this.state == ComponentState.DOWN ? 1 : 0), this.title, this.currentColor, Font.Orientation.CENTER);
     }
 
     @Override
     public void layout() {
-        this.width = this.font.getWidth(this.title) + padding.left + padding.right;
+        this.width = this.root.width - this.root.padding.left - this.root.padding.right;//this.font.getWidth(this.title) + padding.left + padding.right;
         this.height = this.font.lineheight + padding.top + padding.bottom;
     }
 

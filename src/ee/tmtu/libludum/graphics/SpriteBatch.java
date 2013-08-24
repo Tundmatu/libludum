@@ -153,6 +153,10 @@ public class SpriteBatch {
         vertex(x4, y4, r, g, b, a, u, v2);
     }
 
+    public void draw(Texture texture, float x, float y, float width, float height) {
+        draw(texture, x, y, width, height, 0, 0, 1, 1);
+    }
+
     public void draw(Texture tex, float x, float y, float width, float height, float u, float v,
                      float u2, float v2) {
         draw(tex, x, y, width, height, x, y, 0f, u, v, u2, v2);
