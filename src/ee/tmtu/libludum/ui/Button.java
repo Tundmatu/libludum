@@ -24,9 +24,9 @@ public class Button extends Component {
 
     public Button(String title, Font font) {
         super(new Margin(0), new Padding(0));
-        this.idle = new Patch9(AssetManager.load("./assets/idle.png", Texture.class), 5);
-        this.hover = new Patch9(AssetManager.load("./assets/hover.png", Texture.class), 5);
-        this.click = new Patch9(AssetManager.load("./assets/click.png", Texture.class), 5);
+        this.idle = new Patch9(AssetManager.load("./assets/img/idle.png", Texture.class), 5);
+        this.hover = new Patch9(AssetManager.load("./assets/img/hover.png", Texture.class), 5);
+        this.click = new Patch9(AssetManager.load("./assets/img/click.png", Texture.class), 5);
         this.drawable = idle;
         this.title = title;
         this.font = font;
@@ -101,7 +101,11 @@ public class Button extends Component {
 
     @Override
     public void layout() {
-        this.width = this.root.width - this.root.padding.left - this.root.padding.right;//this.font.getWidth(this.title) + padding.left + padding.right;
+        if(this.root != null) {
+            this.width = this.root.width - this.root.padding.left - this.root.padding.right;//this.font.getWidth(this.title) + padding.left + padding.right;
+        } else {
+            this.width = this.font.getWidth(this.title) + padding.left + padding.right;
+        }
         this.height = this.font.lineheight + padding.top + padding.bottom;
     }
 

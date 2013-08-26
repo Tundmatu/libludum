@@ -7,6 +7,7 @@ import ee.tmtu.libludum.ui.event.MouseEvent;
 public abstract class Component {
 
     public float x, y, width, height;
+    public boolean invisible;
     public Drawable drawable;
     public ComponentState state;
     public Orientation orientation;

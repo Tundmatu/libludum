@@ -2,6 +2,7 @@ package ee.tmtu.libludum.assets;
 
 import com.google.gson.Gson;
 import ee.tmtu.libludum.assets.loaders.FontLoader;
+import ee.tmtu.libludum.assets.loaders.LineLoader;
 import ee.tmtu.libludum.assets.loaders.SoundLoader;
 import ee.tmtu.libludum.assets.loaders.TextureLoader;
 import ee.tmtu.libludum.graphics.Font;
@@ -48,6 +49,7 @@ public class AssetManager {
         AssetManager.register(Texture.class, new TextureLoader());
         AssetManager.register(Font.class, new FontLoader());
         AssetManager.register(Sound.class, new SoundLoader());
+        AssetManager.register(String[].class, new LineLoader());
     }
 
 }

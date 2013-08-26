@@ -11,15 +11,17 @@ public class VertexArray implements Bindable {
     private FloatBuffer data;
     private VertexAttribute[] attributes;
     private int stride = 0;
+    private int len = 0;
     private int size;
 
     public VertexArray(int size, VertexAttribute... attributes) {
         this.attributes = attributes;
         for (VertexAttribute va : this.attributes) {
+            len += va.len;
             stride += va.len * GLHelper.sizeof(va.type);
         }
-        this.size = size;
-        this.data = BufferUtils.createFloatBuffer(size);
+        this.size = size * len;
+        this.data = BufferUtils.createFloatBuffer(this.size);
     }
 
     public FloatBuffer buffer() {

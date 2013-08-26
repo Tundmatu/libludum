@@ -16,7 +16,7 @@ public class Container extends Component {
     public Container(Margin margin, Padding padding) {
         super(margin, padding);
         this.components = new LinkedList<>();
-        this.background = new Patch9(AssetManager.load("./assets/idle.png", Texture.class), 5);
+        this.background = new Patch9(AssetManager.load("./assets/img/idle.png", Texture.class), 5);
         this.drawable = this.background;
     }
 
@@ -44,7 +44,7 @@ public class Container extends Component {
 
     @Override
     public void draw(SpriteBatch batch, double lerp) {
-        super.draw(batch, lerp);
+        if(!this.invisible) super.draw(batch, lerp);
         for(Component component : this.components) {
             component.draw(batch, lerp);
         }

@@ -4,6 +4,8 @@
 lib/
 out/
 ld27/
+assets/
+!assets/settings.cfg
 
 # Intellij IDEA
 .idea/

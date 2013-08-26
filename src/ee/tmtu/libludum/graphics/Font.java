@@ -47,6 +47,10 @@ public class Font {
 		for(String s : text.split("\n")) {
 			for(int i = 0; i < s.length(); i++) {
 				char c = s.charAt(i);
+                if(c == '\247') {
+                    batch.setColor(new Color(251, 208, 141));
+                    continue;
+                }
 				Glyph g = glyphs[c];
 				if(g != null) {
 					Texture tex = pages[g.page];
@@ -65,6 +69,7 @@ public class Font {
         int x = 0;
         for(int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
+            if(c == '\247') continue;
             Glyph g = glyphs[c];
             if(g != null) {
                 x += g.xadv;
