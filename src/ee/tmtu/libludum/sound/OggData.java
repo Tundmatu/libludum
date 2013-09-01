@@ -13,15 +13,16 @@ public class OggData {
     public int format;
     public int samplerate;
 
-    public OggData(String res) throws IOException {
-        this(new File(res));
+    public static OggData create(String res) throws IOException {
+        return OggData.create(new File(res));
     }
 
-    public OggData(File file) throws IOException {
-        this(new FileInputStream(file));
+    public static OggData create(File file) throws IOException {
+        return OggData.create(new FileInputStream(file));
     }
 
-    public OggData(InputStream is) throws IOException {
+    public static OggData create(InputStream is) throws IOException {
+        OggData ogg = new OggData();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         OggInputStream ois = new OggInputStream(is);
 
@@ -29,13 +30,14 @@ public class OggData {
             bos.write(ois.read());
         }
 
-        this.format = ois.getChannels() > 1 ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
-        this.samplerate = ois.getRate();
+        ogg.format = ois.getChannels() > 1 ? AL_FORMAT_STEREO16 : AL_FORMAT_MONO16;
+        ogg.samplerate = ois.getRate();
 
         byte[] barr = bos.toByteArray();
-        this.data = ByteBuffer.allocateDirect(barr.length);
-        this.data.put(barr);
-        this.data.rewind();
+        ogg.data = ByteBuffer.allocateDirect(barr.length);
+        ogg.data.put(barr);
+        ogg.data.rewind();
+        return ogg;
     }
 
     public void dispose() {

@@ -15,11 +15,11 @@ public class OggLoader implements AssetLoader<Sound> {
 
     @Override
     public Sound load(File res) throws IOException {
-        OggData wav = new OggData(res);
+        OggData ogg = OggData.create(res);
         int buffer = alGenBuffers();
         int source = alGenSources();
-        alBufferData(buffer, wav.format, wav.data, wav.samplerate);
-        wav.dispose();
+        alBufferData(buffer, ogg.format, ogg.data, ogg.samplerate);
+        ogg.dispose();
 
         Sound sound = new Sound();
         sound.setSource(source);
