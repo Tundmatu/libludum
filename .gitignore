@@ -5,6 +5,8 @@ lib/
 out/
 ld27/
 assets/
+src/com/
+test/
 !assets/settings.cfg
 
 # Intellij IDEA

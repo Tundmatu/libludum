@@ -1,6 +1,7 @@
 package ee.tmtu.libludum.assets.loaders;
 
 import ee.tmtu.libludum.assets.AssetLoader;
+import ee.tmtu.libludum.sound.OggData;
 import ee.tmtu.libludum.sound.Sound;
 import org.lwjgl.util.WaveData;
 import org.lwjgl.util.vector.Vector2f;
@@ -15,7 +16,7 @@ public class SoundLoader implements AssetLoader<Sound> {
 
     @Override
     public Sound load(File res) throws IOException {
-        WaveData wav = WaveData.create(res.toURI().toURL());
+        OggData wav = new OggData(res);
         int buffer = alGenBuffers();
         int source = alGenSources();
         alBufferData(buffer, wav.format, wav.data, wav.samplerate);

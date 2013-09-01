@@ -1,4 +1,4 @@
-package ee.tmtu.libludum.core;
+package ee.tmtu.libludum.util;
 
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenAccessor;
