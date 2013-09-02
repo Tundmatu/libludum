@@ -6,7 +6,6 @@ import org.lwjgl.BufferUtils;
 import java.nio.ByteBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL11.glTexImage2D;
 
 public class Texture implements Bindable, Disposable {
 
@@ -90,7 +89,7 @@ public class Texture implements Bindable, Disposable {
 
     @Override
     public boolean equals(Object rhs) {
-        return (rhs instanceof Texture) && this.id == ((Texture)rhs).id;
+        return (rhs instanceof Texture) && this.id == ((Texture) rhs).id;
     }
 
     public enum FillMode {

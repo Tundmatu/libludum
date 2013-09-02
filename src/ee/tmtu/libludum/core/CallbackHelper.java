@@ -56,7 +56,7 @@ public class CallbackHelper {
     }
 
     public static void start() {
-        if(CallbackHelper.updateThread != null && CallbackHelper.updateThread.isAlive()) {
+        if (CallbackHelper.updateThread != null && CallbackHelper.updateThread.isAlive()) {
             try {
                 CallbackHelper.updateThread.join();
             } catch (InterruptedException e) {

@@ -44,31 +44,31 @@ public class TextField extends Component {
 
     @Override
     public void onEvent(Event event) {
-        if(event instanceof KeyEvent) {
-            KeyEvent ke = (KeyEvent)event;
-            if(this.listener != null) {
-                if(this.listener.onKey(ke)) {
+        if (event instanceof KeyEvent) {
+            KeyEvent ke = (KeyEvent) event;
+            if (this.listener != null) {
+                if (this.listener.onKey(ke)) {
                     return;
                 }
             }
-            if(ke.state == KeyEvent.KeyState.DOWN) {
+            if (ke.state == KeyEvent.KeyState.DOWN) {
                 switch (ke.key) {
                     case Keyboard.KEY_BACK:
-                        if(this.str.length() > 0) {
+                        if (this.str.length() > 0) {
                             this.str = this.str.substring(0, this.str.length() - 1);
                         }
                         break;
 
                     default:
-                        if(TextField.allowed.matcher(""+ke.ch).matches()) {
+                        if (TextField.allowed.matcher("" + ke.ch).matches()) {
                             this.str += ke.ch;
                         }
                         break;
                 }
             }
         }
-        if(event instanceof MouseEvent) {
-            MouseEvent me = (MouseEvent)event;
+        if (event instanceof MouseEvent) {
+            MouseEvent me = (MouseEvent) event;
             switch (me.state) {
                 case DOWN:
                     this.onDown(me);
@@ -85,7 +85,7 @@ public class TextField extends Component {
 
     @Override
     public void onEnter(MouseEvent event) {
-        if(this.state != ComponentState.DOWN) {
+        if (this.state != ComponentState.DOWN) {
             this.state = ComponentState.HOVER;
         }
     }
@@ -103,7 +103,7 @@ public class TextField extends Component {
 
     @Override
     public void onUp(MouseEvent event) {
-        if(this.state == ComponentState.DOWN) {
+        if (this.state == ComponentState.DOWN) {
             this.state = ComponentState.UP;
         }
     }
@@ -113,7 +113,7 @@ public class TextField extends Component {
         super.update();
 
         this.cursorPulse++;
-        if(this.cursorPulse > 10) {
+        if (this.cursorPulse > 10) {
             this.cursor = !this.cursor;
             this.cursorPulse = 0;
         }
@@ -124,7 +124,7 @@ public class TextField extends Component {
         super.draw(batch, lerp);
 
         this.font.draw(batch, this.x + this.width / 2, this.y + padding.top - 2, this.str, ReadableColor.WHITE, Font.Orientation.CENTER);
-        if(this.cursor) {
+        if (this.cursor) {
             batch.draw(this.blank, this.x + this.width / 2 + this.font.getWidth(this.str) / 2 + 4, this.y + this.height / 2 - this.font.lineheight / 2 - 2, 2, this.font.lineheight);
         }
     }

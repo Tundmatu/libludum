@@ -8,14 +8,14 @@ import com.jcraft.jorbis.Block;
 import com.jcraft.jorbis.Comment;
 import com.jcraft.jorbis.DspState;
 import com.jcraft.jorbis.Info;
+import org.lwjgl.BufferUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import org.lwjgl.BufferUtils;
 
-public class OggInputStream extends InputStream implements AudioInputStream
-{
+public class OggInputStream extends InputStream implements AudioInputStream {
     private byte[] buffer;
     private int bytes = 0;
     private boolean bigEndian = ByteOrder.nativeOrder().equals(ByteOrder.BIG_ENDIAN);
@@ -69,8 +69,7 @@ public class OggInputStream extends InputStream implements AudioInputStream
         this.syncState.init();
     }
 
-    private boolean getPageAndPacket()
-    {
+    private boolean getPageAndPacket() {
         int index = this.syncState.buffer(4096);
 
         this.buffer = this.syncState.data;
@@ -186,20 +185,17 @@ public class OggInputStream extends InputStream implements AudioInputStream
                 while (!this.endOfBitStream) {
                     int result = this.syncState.pageout(this.page);
 
-                    if (result == 0)
-                    {
+                    if (result == 0) {
                         break;
                     }
                     if (result != -1) {
                         this.streamState.pagein(this.page);
-                        while (true)
-                        {
+                        while (true) {
                             result = this.streamState.packetout(this.packet);
 
                             if (result == 0)
                                 break;
-                            if (result != -1)
-                            {
+                            if (result != -1) {
                                 if (this.vorbisBlock.synthesis(this.packet) == 0)
                                     this.dspState.synthesis_blockin(this.vorbisBlock);
                                 int samples;
@@ -213,7 +209,7 @@ public class OggInputStream extends InputStream implements AudioInputStream
 
                                         int mono = _index[i];
                                         for (int j = 0; j < bout; j++) {
-                                            int val = (int)(pcm[i][(mono + j)] * 32767.0D);
+                                            int val = (int) (pcm[i][(mono + j)] * 32767.0D);
 
                                             if (val > 32767) {
                                                 val = 32767;
@@ -225,11 +221,11 @@ public class OggInputStream extends InputStream implements AudioInputStream
                                                 val |= 32768;
                                             }
                                             if (this.bigEndian) {
-                                                this.convbuffer[ptr] = ((byte)(val >>> 8));
-                                                this.convbuffer[(ptr + 1)] = ((byte)val);
+                                                this.convbuffer[ptr] = ((byte) (val >>> 8));
+                                                this.convbuffer[(ptr + 1)] = ((byte) val);
                                             } else {
-                                                this.convbuffer[ptr] = ((byte)val);
-                                                this.convbuffer[(ptr + 1)] = ((byte)(val >>> 8));
+                                                this.convbuffer[ptr] = ((byte) val);
+                                                this.convbuffer[(ptr + 1)] = ((byte) (val >>> 8));
                                             }
                                             ptr += 2 * this.oggInfo.channels;
                                         }
@@ -319,15 +315,14 @@ public class OggInputStream extends InputStream implements AudioInputStream
             try {
                 int value = read();
                 if (value >= 0) {
-                    b[i] = ((byte)value);
+                    b[i] = ((byte) value);
                 } else {
                     if (i == 0) {
                         return -1;
                     }
                     return i;
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 return i;
             }
         }

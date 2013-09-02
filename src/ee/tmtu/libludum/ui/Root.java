@@ -4,7 +4,6 @@ import ee.tmtu.libludum.ui.event.Event;
 import ee.tmtu.libludum.ui.event.KeyEvent;
 import ee.tmtu.libludum.ui.event.MouseEvent;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Root extends Container {
@@ -43,7 +42,7 @@ public class Root extends Container {
     public void fire(Event event) {
         if (event instanceof KeyEvent) {
             KeyEvent ke = (KeyEvent) event;
-            if(this.focus != null) {
+            if (this.focus != null) {
                 this.focus.onEvent(ke);
             }
         } else if (event instanceof MouseEvent) {
@@ -54,10 +53,10 @@ public class Root extends Container {
             boolean hoverset = false;
             while (iterator.hasNext()) {
                 component = iterator.next();
-                if(component.invisible) continue;
+                if (component.invisible) continue;
                 if (component.isInside(me.x, me.y)) {
-                    if(this.hover != component) {
-                        if(this.hover != null) this.hover.onLeave(me);
+                    if (this.hover != component) {
+                        if (this.hover != null) this.hover.onLeave(me);
                         component.onEnter(me);
                     }
                     this.hover = component;
@@ -68,7 +67,7 @@ public class Root extends Container {
                 }
             }
             if (!hoverset) {
-                if(this.hover != null) {
+                if (this.hover != null) {
                     this.hover.onLeave(me);
                     //this.hover.state = Component.ComponentState.IDLE;
                     this.hover = null;

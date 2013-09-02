@@ -1,7 +1,6 @@
 package ee.tmtu.libludum.assets.loaders;
 
 import ee.tmtu.libludum.assets.AssetLoader;
-import ee.tmtu.libludum.sound.OggData;
 import ee.tmtu.libludum.sound.Sound;
 import org.lwjgl.util.WaveData;
 import org.lwjgl.util.vector.Vector2f;
@@ -9,7 +8,6 @@ import org.lwjgl.util.vector.Vector3f;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 import static org.lwjgl.openal.AL10.*;
 

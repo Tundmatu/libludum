@@ -1,6 +1,5 @@
 package ee.tmtu.libludum.util;
 
-import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenAccessor;
 import org.lwjgl.util.Color;
 
@@ -16,22 +15,22 @@ public class ColorAccessor implements TweenAccessor<Color> {
     public int getValues(Color color, int type, float[] floats) {
         switch (type) {
             case RGBA:
-                floats[0] = (float)color.getRed() / 255.f;
-                floats[1] = (float)color.getGreen() / 255.f;
-                floats[2] = (float)color.getBlue() / 255.f;
-                floats[3] = (float)color.getAlpha() / 255.f;
+                floats[0] = (float) color.getRed() / 255.f;
+                floats[1] = (float) color.getGreen() / 255.f;
+                floats[2] = (float) color.getBlue() / 255.f;
+                floats[3] = (float) color.getAlpha() / 255.f;
                 return 4;
             case R:
-                floats[0] = (float)color.getRed() / 255.f;
+                floats[0] = (float) color.getRed() / 255.f;
                 return 1;
             case G:
-                floats[0] = (float)color.getGreen() / 255.f;
+                floats[0] = (float) color.getGreen() / 255.f;
                 return 1;
             case B:
-                floats[0] = (float)color.getBlue() / 255.f;
+                floats[0] = (float) color.getBlue() / 255.f;
                 return 1;
             case A:
-                floats[0] = (float)color.getAlpha() / 255.f;
+                floats[0] = (float) color.getAlpha() / 255.f;
                 return 1;
             default:
                 return 0;
@@ -42,19 +41,19 @@ public class ColorAccessor implements TweenAccessor<Color> {
     public void setValues(Color color, int type, float[] floats) {
         switch (type) {
             case RGBA:
-                color.set((int)(floats[0]*255.f), (int)(floats[1]*255.f), (int)(floats[2]*255.f), (int)(floats[3]*255.f));
+                color.set((int) (floats[0] * 255.f), (int) (floats[1] * 255.f), (int) (floats[2] * 255.f), (int) (floats[3] * 255.f));
                 break;
             case R:
-                color.setRed((int)(floats[0]*255.f));
+                color.setRed((int) (floats[0] * 255.f));
                 break;
             case G:
-                color.setGreen((int)(floats[0]*255.f));
+                color.setGreen((int) (floats[0] * 255.f));
                 break;
             case B:
-                color.setBlue((int)(floats[0]*255.f));
+                color.setBlue((int) (floats[0] * 255.f));
                 break;
             case A:
-                color.setAlpha((int)(floats[0]*255.f));
+                color.setAlpha((int) (floats[0] * 255.f));
                 break;
         }
     }

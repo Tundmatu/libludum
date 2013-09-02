@@ -93,10 +93,10 @@ public class SpriteBatch {
             this.currentTexture = tex;
         }
 
-        final float r = (float)color.getRed() / 255.f;
-        final float g = (float)color.getGreen() / 255.f;
-        final float b = (float)color.getBlue() / 255.f;
-        final float a = (float)color.getAlpha() / 255.f;
+        final float r = (float) color.getRed() / 255.f;
+        final float g = (float) color.getGreen() / 255.f;
+        final float b = (float) color.getBlue() / 255.f;
+        final float a = (float) color.getAlpha() / 255.f;
 
 
         float x1, y1, x2, y2, x3, y3, x4, y4;

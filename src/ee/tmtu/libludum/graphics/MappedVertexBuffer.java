@@ -2,7 +2,8 @@ package ee.tmtu.libludum.graphics;
 
 import java.nio.*;
 
-import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL15.glBindBuffer;
+import static org.lwjgl.opengl.GL15.glUnmapBuffer;
 
 public class MappedVertexBuffer {
 

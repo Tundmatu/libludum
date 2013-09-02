@@ -53,7 +53,7 @@ public abstract class Component {
     }
 
     public void draw(SpriteBatch batch, double lerp) {
-        if(this.drawable != null) {
+        if (this.drawable != null) {
             this.drawable.draw(batch, this.x, this.y, this.width, this.height);
         }
     }

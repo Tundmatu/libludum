@@ -2,7 +2,7 @@ package ee.tmtu.libludum.graphics;
 
 import org.lwjgl.BufferUtils;
 
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.glDrawArrays;
 import static org.lwjgl.opengl.GL15.*;
 
 public class VertexBuffer extends GLBuffer {

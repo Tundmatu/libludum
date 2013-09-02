@@ -49,7 +49,7 @@ public abstract class Game implements Runnable {
         double frameTime;
         double newTime;
 
-        while(!this.quit && !Display.isCloseRequested()) {
+        while (!this.quit && !Display.isCloseRequested()) {
             newTime = System.currentTimeMillis() / 1000.;
             frameTime = newTime - currentTime;
             currentTime = newTime;

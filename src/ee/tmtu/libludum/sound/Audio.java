@@ -63,7 +63,7 @@ public class Audio {
     static {
         Audio.setPosition(new Vector2f(0.f, 0.f));
         Audio.setVelocity(new Vector3f(0.f, 0.f, 0.f));
-        Audio.setOrientation(0.0f, 0.0f, -1.0f,  0.0f, 1.0f, 0.0f);
+        Audio.setOrientation(0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f);
     }
 
 }

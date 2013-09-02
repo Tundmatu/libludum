@@ -35,9 +35,9 @@ public class Button extends Component {
 
     @Override
     public void onEvent(Event event) {
-        if(event instanceof MouseEvent) {
-            MouseEvent me = (MouseEvent)event;
-            if(listener != null) {
+        if (event instanceof MouseEvent) {
+            MouseEvent me = (MouseEvent) event;
+            if (listener != null) {
                 switch (me.state) {
                     case DOWN:
                         this.onDown(me);
@@ -54,7 +54,7 @@ public class Button extends Component {
 
     @Override
     public void onEnter(MouseEvent event) {
-        if(this.state != ComponentState.DOWN) {
+        if (this.state != ComponentState.DOWN) {
             this.drawable = this.hover;
             this.currentColor = Button.hoverColor;
             this.state = ComponentState.HOVER;
@@ -77,9 +77,9 @@ public class Button extends Component {
 
     @Override
     public void onUp(MouseEvent event) {
-        if(this.state == ComponentState.DOWN) {
+        if (this.state == ComponentState.DOWN) {
             this.state = ComponentState.UP;
-            if(this.listener != null) {
+            if (this.listener != null) {
                 this.listener.onMouseEvent(event);
             }
             this.drawable = this.hover;
@@ -101,7 +101,7 @@ public class Button extends Component {
 
     @Override
     public void layout() {
-        if(this.root != null) {
+        if (this.root != null) {
             this.width = this.root.width - this.root.padding.left - this.root.padding.right;//this.font.getWidth(this.title) + padding.left + padding.right;
         } else {
             this.width = this.font.getWidth(this.title) + padding.left + padding.right;

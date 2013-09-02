@@ -30,21 +30,21 @@ public class QuadTree<T extends Collidable> {
 
     public void add(T collidable) {
         int index = this.index(collidable);
-        if(index != -1) {
+        if (index != -1) {
             this.nodes[index].add(collidable);
             return;
         }
         this.children.add(collidable);
 
-        if(this.children.size() >= QuadTree.MAX_NODES && this.level < QuadTree.MAX_DEPTH) {
-            if(!this.split) {
+        if (this.children.size() >= QuadTree.MAX_NODES && this.level < QuadTree.MAX_DEPTH) {
+            if (!this.split) {
                 this.split();
             }
             Collidable c;
-            for(int i = 0; i < this.children.size(); i++) {
+            for (int i = 0; i < this.children.size(); i++) {
                 c = this.children.remove(i);
                 int idx = this.index(c);
-                if(idx != -1) {
+                if (idx != -1) {
                     this.nodes[idx].add(c);
                 }
             }
@@ -83,14 +83,14 @@ public class QuadTree<T extends Collidable> {
         boolean top = collidable.getY() + collidable.getHeight() < horizontal;
         boolean bottom = collidable.getY() > horizontal;
         if (collidable.getX() + collidable.getWidth() < vertical) {
-            if(top)
+            if (top)
                 return 0;
-            else if(bottom)
+            else if (bottom)
                 return 1;
         } else if (collidable.getX() > vertical) {
-            if(top)
+            if (top)
                 return 3;
-            else if(bottom)
+            else if (bottom)
                 return 2;
         }
         return -1;
@@ -98,7 +98,7 @@ public class QuadTree<T extends Collidable> {
 
     public void fetch(List<Collidable> lhs, Collidable collidable) {
         int index = this.index(collidable);
-        if(index != -1 && this.split) {
+        if (index != -1 && this.split) {
             this.nodes[index].fetch(lhs, collidable);
         }
         lhs.addAll(this.children);

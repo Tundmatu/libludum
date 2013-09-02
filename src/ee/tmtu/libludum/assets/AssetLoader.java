@@ -5,6 +5,6 @@ import java.io.IOException;
 
 public interface AssetLoader<T> {
 
-	public T load(File res) throws IOException;
+    public T load(File res) throws IOException;
 
 }

@@ -14,22 +14,22 @@ import java.util.Map;
 
 public class AssetManager {
 
-	private static final Map<Class<?>, AssetReference> assetLoaders = new HashMap<>();
-	private static final Map<String, Object> loadedCache = new HashMap<>();
+    private static final Map<Class<?>, AssetReference> assetLoaders = new HashMap<>();
+    private static final Map<String, Object> loadedCache = new HashMap<>();
 
     public static final Gson gson = new Gson();
 
-	public static <T> T load(String res, Class<T> type) {
-		return load(res, type, assetLoaders);
-	}
+    public static <T> T load(String res, Class<T> type) {
+        return load(res, type, assetLoaders);
+    }
 
-	public static <T> T load(String res, Class<T> type, Map<Class<?>, AssetReference> loaders) {
-		File file = new File(res);
+    public static <T> T load(String res, Class<T> type, Map<Class<?>, AssetReference> loaders) {
+        File file = new File(res);
         if (loadedCache.containsKey(file.getPath())) {
             Logger.ASSET.log(String.format("Returned cached version of %s.", res));
             return (T) loadedCache.get(file.getPath());
         }
-		AssetReference ar = loaders.get(type);
+        AssetReference ar = loaders.get(type);
         String ext = res.substring(res.lastIndexOf('.', res.length() - 1));
         AssetLoader al = ar.multi ? ar.extensions.get(ext.toLowerCase()) : ar.loader;
         T ret = null;
@@ -41,12 +41,12 @@ public class AssetManager {
             e.printStackTrace();
         }
         return ret;
-	}
+    }
 
-	public static void register(Class<?> c, AssetReference ar) {
+    public static void register(Class<?> c, AssetReference ar) {
         Logger.ASSET.log(String.format("Registering loader(s) for %s.", c.getSimpleName()));
         assetLoaders.put(c, ar);
-	}
+    }
 
     static {
         AssetManager.register(Texture.class, new AssetReference().extension("png", new PngLoader()));

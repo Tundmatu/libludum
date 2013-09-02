@@ -31,21 +31,21 @@ public class Container extends Component {
             component.x = x + padding.left;
             component.y = y + padding.top + yHeight;
             yHeight += component.height;
-            if(yHeight > this.height) this.height = yHeight + padding.bottom + padding.top;
+            if (yHeight > this.height) this.height = yHeight + padding.bottom + padding.top;
         }
     }
 
     @Override
     public void update() {
-        for(Component component : this.components) {
+        for (Component component : this.components) {
             component.update();
         }
     }
 
     @Override
     public void draw(SpriteBatch batch, double lerp) {
-        if(!this.invisible) super.draw(batch, lerp);
-        for(Component component : this.components) {
+        if (!this.invisible) super.draw(batch, lerp);
+        for (Component component : this.components) {
             component.draw(batch, lerp);
         }
     }

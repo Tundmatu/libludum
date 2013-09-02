@@ -27,32 +27,38 @@ public class Logger {
     }
 
     public void err(String minor, String msg) {
-        if(this.level < LoggerLevel.ERROR || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.ERROR)) return;
+        if (this.level < LoggerLevel.ERROR || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.ERROR))
+            return;
         this.log(minor, msg, true);
     }
 
     public void err(String msg) {
-        if(this.level < LoggerLevel.ERROR || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.ERROR)) return;
+        if (this.level < LoggerLevel.ERROR || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.ERROR))
+            return;
         this.log(msg, true);
     }
 
     public void wrn(String minor, String msg) {
-        if(this.level < LoggerLevel.WARNING || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.WARNING)) return;
+        if (this.level < LoggerLevel.WARNING || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.WARNING))
+            return;
         this.log(minor, msg, true);
     }
 
     public void wrn(String msg) {
-        if(this.level < LoggerLevel.WARNING || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.WARNING)) return;
+        if (this.level < LoggerLevel.WARNING || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.WARNING))
+            return;
         this.log(msg, true);
     }
 
     public void log(String minor, String msg) {
-        if(this.level < LoggerLevel.DEBUG || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.DEBUG)) return;
+        if (this.level < LoggerLevel.DEBUG || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.DEBUG))
+            return;
         this.log(minor, msg, true);
     }
 
     public void log(String msg) {
-        if(this.level < LoggerLevel.DEBUG || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.DEBUG)) return;
+        if (this.level < LoggerLevel.DEBUG || (Logger.master != LoggerLevel.NONE && Logger.master < LoggerLevel.DEBUG))
+            return;
         this.log(msg, true);
     }
 

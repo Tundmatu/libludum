@@ -1,11 +1,10 @@
 package ee.tmtu.libludum.sound;
 
-import org.lwjgl.util.WaveData;
-
 import java.io.*;
 import java.nio.ByteBuffer;
 
-import static org.lwjgl.openal.AL10.*;
+import static org.lwjgl.openal.AL10.AL_FORMAT_MONO16;
+import static org.lwjgl.openal.AL10.AL_FORMAT_STEREO16;
 
 public class OggData {
 
