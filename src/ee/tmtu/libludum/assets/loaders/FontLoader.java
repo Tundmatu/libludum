@@ -4,7 +4,7 @@ import ee.tmtu.libludum.assets.AssetLoader;
 import ee.tmtu.libludum.assets.AssetManager;
 import ee.tmtu.libludum.graphics.Font;
 import ee.tmtu.libludum.graphics.Glyph;
-import ee.tmtu.libludum.graphics.Texture;
+import ee.tmtu.libludum.graphics.opengl.Texture;
 
 import java.io.*;
 

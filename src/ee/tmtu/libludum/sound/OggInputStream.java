@@ -306,7 +306,7 @@ public class OggInputStream extends InputStream implements AudioInputStream {
         return value;
     }
 
-    public boolean atEnd() {
+    public boolean EOS() {
         return (this.endOfStream) && (this.readIndex >= this.pcmBuffer.position());
     }
 

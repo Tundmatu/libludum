@@ -14,7 +14,7 @@ abstract interface AudioInputStream {
 
     public abstract int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2) throws IOException;
 
-    public abstract boolean atEnd();
+    public abstract boolean EOS();
 
     public abstract void close() throws IOException;
 

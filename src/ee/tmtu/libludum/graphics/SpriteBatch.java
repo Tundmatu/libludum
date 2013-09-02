@@ -1,5 +1,8 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.graphics.opengl.Texture;
+import ee.tmtu.libludum.graphics.opengl.VertexArray;
+import ee.tmtu.libludum.graphics.opengl.VertexAttribute;
 import org.lwjgl.util.Color;
 import org.lwjgl.util.ReadableColor;
 

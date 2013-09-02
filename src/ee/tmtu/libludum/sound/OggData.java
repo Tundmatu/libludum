@@ -1,12 +1,14 @@
 package ee.tmtu.libludum.sound;
 
+import ee.tmtu.libludum.core.Disposable;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 
 import static org.lwjgl.openal.AL10.AL_FORMAT_MONO16;
 import static org.lwjgl.openal.AL10.AL_FORMAT_STEREO16;
 
-public class OggData {
+public class OggData implements Disposable {
 
     public ByteBuffer data;
     public int format;
@@ -25,7 +27,7 @@ public class OggData {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         OggInputStream ois = new OggInputStream(is);
 
-        while (!ois.atEnd()) {
+        while (!ois.EOS()) {
             bos.write(ois.read());
         }
 
@@ -39,6 +41,7 @@ public class OggData {
         return ogg;
     }
 
+    @Override
     public void dispose() {
         this.data.clear();
     }

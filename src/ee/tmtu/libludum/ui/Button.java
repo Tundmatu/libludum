@@ -4,7 +4,7 @@ import ee.tmtu.libludum.assets.AssetManager;
 import ee.tmtu.libludum.graphics.Font;
 import ee.tmtu.libludum.graphics.Patch9;
 import ee.tmtu.libludum.graphics.SpriteBatch;
-import ee.tmtu.libludum.graphics.Texture;
+import ee.tmtu.libludum.graphics.opengl.Texture;
 import ee.tmtu.libludum.ui.event.Event;
 import ee.tmtu.libludum.ui.event.MouseEvent;
 import ee.tmtu.libludum.ui.event.MouseListener;

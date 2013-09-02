@@ -2,9 +2,9 @@ package ee.tmtu.libludum.assets;
 
 import com.google.gson.Gson;
 import ee.tmtu.libludum.assets.loaders.*;
-import ee.tmtu.libludum.core.Logger;
+import ee.tmtu.libludum.core.logger.Logger;
 import ee.tmtu.libludum.graphics.Font;
-import ee.tmtu.libludum.graphics.Texture;
+import ee.tmtu.libludum.graphics.opengl.Texture;
 import ee.tmtu.libludum.sound.Sound;
 
 import java.io.File;

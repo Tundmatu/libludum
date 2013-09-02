@@ -1,5 +1,6 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.graphics.opengl.Texture;
 import org.lwjgl.util.vector.Vector4f;
 
 public class Glyph {

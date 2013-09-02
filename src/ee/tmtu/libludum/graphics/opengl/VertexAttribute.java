@@ -1,4 +1,4 @@
-package ee.tmtu.libludum.graphics;
+package ee.tmtu.libludum.graphics.opengl;
 
 import static org.lwjgl.opengl.GL11.*;
 

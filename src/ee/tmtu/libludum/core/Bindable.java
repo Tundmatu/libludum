@@ -1,4 +1,4 @@
-package ee.tmtu.libludum.graphics;
+package ee.tmtu.libludum.core;
 
 public interface Bindable {
 

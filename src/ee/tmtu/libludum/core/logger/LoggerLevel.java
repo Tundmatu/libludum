@@ -1,4 +1,4 @@
-package ee.tmtu.libludum.core;
+package ee.tmtu.libludum.core.logger;
 
 public class LoggerLevel {
 

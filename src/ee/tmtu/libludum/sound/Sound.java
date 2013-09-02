@@ -75,6 +75,10 @@ public class Sound implements Disposable {
         this.looping = looping;
     }
 
+    public boolean isPlaying() {
+        return this.getState() == AL_PLAYING;
+    }
+
     public int getState() {
         return alGetInteger(AL_SOURCE_STATE);
     }

@@ -1,5 +1,6 @@
-package ee.tmtu.libludum.core;
+package ee.tmtu.libludum.core.game;
 
+import ee.tmtu.libludum.core.logger.Logger;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.openal.AL;
 import org.lwjgl.opengl.Display;

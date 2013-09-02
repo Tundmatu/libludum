@@ -2,7 +2,7 @@ package ee.tmtu.libludum.assets.loaders;
 
 import de.matthiasmann.twl.utils.PNGDecoder;
 import ee.tmtu.libludum.assets.AssetLoader;
-import ee.tmtu.libludum.graphics.Texture;
+import ee.tmtu.libludum.graphics.opengl.Texture;
 import org.lwjgl.BufferUtils;
 
 import java.io.File;

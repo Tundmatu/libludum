@@ -1,5 +1,6 @@
 package ee.tmtu.libludum.graphics;
 
+import ee.tmtu.libludum.graphics.opengl.Texture;
 import ee.tmtu.libludum.ui.Drawable;
 
 public class Sprite implements Drawable {
