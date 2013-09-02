@@ -80,7 +80,6 @@ public class CallbackHelper {
                         currentTime = newTime;
                         accumulator += frameTime;
                         while (accumulator >= dt) {
-                            System.out.println(accumulator);
                             CallbackHelper.update((float) dt);
                             accumulator -= dt;
                         }

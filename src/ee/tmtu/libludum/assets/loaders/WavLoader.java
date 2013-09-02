@@ -31,7 +31,6 @@ public class WavLoader implements AssetLoader<Sound> {
         sound.setGain(1.f);
         sound.setPitch(1.f);
 
-        System.out.println(alGetError());
         return sound;
     }
 }

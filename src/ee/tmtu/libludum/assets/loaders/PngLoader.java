@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
 
-public class TextureLoader implements AssetLoader<Texture> {
+public class PngLoader implements AssetLoader<Texture> {
 
     @Override
     public Texture load(File res) throws IOException {

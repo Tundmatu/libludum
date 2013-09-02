@@ -31,10 +31,12 @@ public abstract class Game implements Runnable {
     @Override
     public void run() {
         try {
+            Logger.CORE.log(String.format("Initializing display ('%s', %s, %s).", this.settings.title, this.settings.width, this.settings.height));
             Display.setDisplayMode(new DisplayMode(this.settings.width, this.settings.height));
             Display.setTitle(this.settings.title);
             Display.setVSyncEnabled(this.settings.vsync);
             Display.create();
+            Logger.CORE.log("Initializing OpenAL.");
             AL.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
