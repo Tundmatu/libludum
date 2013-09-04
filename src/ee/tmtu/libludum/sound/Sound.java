@@ -1,6 +1,7 @@
 package ee.tmtu.libludum.sound;
 
 import ee.tmtu.libludum.core.Disposable;
+import ee.tmtu.libludum.core.logger.Logger;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -85,6 +86,7 @@ public class Sound implements Disposable {
 
     @Override
     public void dispose() {
+        Logger.SND.log("Disposing OpenAL source.");
         alDeleteBuffers(this.buffer);
         alDeleteSources(this.source);
     }

@@ -1,6 +1,7 @@
 package ee.tmtu.libludum.sound;
 
 import ee.tmtu.libludum.core.Disposable;
+import ee.tmtu.libludum.core.logger.Logger;
 
 import java.io.*;
 import java.nio.ByteBuffer;
@@ -43,6 +44,7 @@ public class OggData implements Disposable {
 
     @Override
     public void dispose() {
+        Logger.SND.log(String.format("Disposing OggData (%s).", this.data.limit()));
         this.data.clear();
     }
 

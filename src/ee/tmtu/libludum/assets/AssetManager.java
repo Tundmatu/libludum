@@ -25,9 +25,9 @@ public class AssetManager {
 
     public static <T> T load(String res, Class<T> type, Map<Class<?>, AssetReference> loaders) {
         File file = new File(res);
-        if (loadedCache.containsKey(file.getPath())) {
+        if (loadedCache.containsKey(type.getName() + ":" + file.getPath())) {
             Logger.ASSET.log(String.format("Returned cached version of %s.", res));
-            return (T) loadedCache.get(file.getPath());
+            return (T) loadedCache.get(type.getName() + ":" + file.getPath());
         }
         AssetReference ar = loaders.get(type);
         String ext = res.substring(res.lastIndexOf('.', res.length() - 1));
@@ -36,7 +36,7 @@ public class AssetManager {
         try {
             Logger.ASSET.log(String.format("Caching asset of type %s with path %s.", type.getSimpleName(), res));
             ret = (T) al.load(file);
-            loadedCache.put(file.getPath(), ret);
+            loadedCache.put(type.getName() + ":" + file.getPath(), ret);
         } catch (IOException e) {
             e.printStackTrace();
         }
